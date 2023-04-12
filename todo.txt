@@ -1,0 +1,6 @@
+to do {
+	-Push-swap op
+	-sorting algo
+	-mem leaks
+	-clean-up
+}
