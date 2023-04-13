@@ -1,4 +1,4 @@
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -7,17 +7,25 @@ static void set_up(t_list **stack, int argc, char **argv)
 {
     init_list(stack, argc, argv);
     index_stack(stack);
-    list_visualize(stack, 'A');
 }
 
 static void sort_stack(t_list **stack_a, t_list **stack_b)
 {
-    /*
-    if (lst_size(**stack_a) <= 5)
-        simple_sort(stack_a, stack_b);
+    int     op;
+    char    *str_op;
+
+    op = 0;
+    
+    if (lst_size(stack_a) <= 5)
+        simple_sort(stack_a, stack_b, &op);
     else
-    */
-    radix_sort(stack_a, stack_b);
+        radix_sort(stack_a, stack_b, &op);
+    if (!is_sorted(stack_a))
+        error_log("An error occured while sorting the stack.\n");
+    str_op = ft_itoa(op);
+    ft_putstr_fd("Stack sorted with ", 1);
+    ft_putstr_fd(str_op, 1);
+    ft_putstr_fd(" Operations\n", 1);
 }
 
 int main(int argc, char **argv)
@@ -37,6 +45,7 @@ int main(int argc, char **argv)
     {
         free_stack(stack_a);
         free_stack(stack_b);
+        error_log("Stack is already sorted!\n");
         return (0);
     }
     sort_stack(stack_a, stack_b);

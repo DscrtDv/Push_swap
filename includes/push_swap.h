@@ -11,8 +11,8 @@ typedef struct s_list{
 }					t_list;
 
 //sorting
-void	radix_sort(t_list **stack_a, t_list **stack_b);
-
+void radix_sort(t_list **stack_a, t_list **stack_b, int *op);
+void simple_sort(t_list **stack_a, t_list **stack_b, int *op);
 //push-swap Operations
 int sa(t_list **stack_a);
 int sb(t_list **stack_b);
