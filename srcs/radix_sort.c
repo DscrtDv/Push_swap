@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   radix_sort.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tcensier <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/04/13 20:12:28 by tcensier      #+#    #+#                 */
+/*   Updated: 2023/04/13 20:12:31 by tcensier      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/push_swap.h"
 
 void    radix_sort(t_list **stack_a, t_list **stack_b, int *op)
@@ -29,5 +40,4 @@ void    radix_sort(t_list **stack_a, t_list **stack_b, int *op)
             *op += pa(stack_b, stack_a);
         i++;
     }
-    list_visualize(stack_a, 'A');
 }

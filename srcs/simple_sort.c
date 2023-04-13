@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   simple_sort.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tcensier <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/04/13 20:12:35 by tcensier      #+#    #+#                 */
+/*   Updated: 2023/04/13 20:12:38 by tcensier      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/push_swap.h"
 
 static int	get_min(t_list **stack)
@@ -62,8 +73,6 @@ int    small_sort(t_list **stack_a, t_list **stack_b, int size)
         op += pb(stack_a, stack_b);
         next_min++;
     }
-    list_visualize(stack_a, 'A');
-    list_visualize(stack_b, 'B');
     op += sort_3(stack_a);
     while (lst_size(stack_b))
         op += pa(stack_b, stack_a);
@@ -83,5 +92,4 @@ void    simple_sort(t_list **stack_a, t_list **stack_b, int *op)
         *op = sort_3(stack_a);
     else if (size > 3)
         *op = small_sort(stack_a, stack_b, size);
-    list_visualize(stack_a, 'A');
 }

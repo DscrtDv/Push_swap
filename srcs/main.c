@@ -1,12 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: tcensier <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/04/13 20:12:06 by tcensier      #+#    #+#                 */
+/*   Updated: 2023/04/13 20:35:32 by tcensier      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/push_swap.h"
 #include <stdarg.h>
 #include <stddef.h>
-#include <stdio.h>
 
 static void set_up(t_list **stack, int argc, char **argv)
 {
-    init_list(stack, argc, argv);
-    index_stack(stack);
+	init_list(stack, argc, argv);
+	index_stack(stack);
 }
 
 static void sort_stack(t_list **stack_a, t_list **stack_b)
@@ -15,7 +25,7 @@ static void sort_stack(t_list **stack_a, t_list **stack_b)
     char    *str_op;
 
     op = 0;
-    
+    list_visualize(stack_a, 'A');
     if (lst_size(stack_a) <= 5)
         simple_sort(stack_a, stack_b, &op);
     else
@@ -23,6 +33,7 @@ static void sort_stack(t_list **stack_a, t_list **stack_b)
     if (!is_sorted(stack_a))
         error_log("An error occured while sorting the stack.\n");
     str_op = ft_itoa(op);
+    list_visualize(stack_a, 'A');
     ft_putstr_fd("Stack sorted with ", 1);
     ft_putstr_fd(str_op, 1);
     ft_putstr_fd(" Operations\n", 1);
