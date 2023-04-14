@@ -39,12 +39,12 @@ static int	find_duplicate(int val, char **argt, int i)
 	return (0);
 }
 
-void		check_args(int argc, char **argv)
+void	check_args(int argc, char **argv)
 {
 	long	temp;
 	int		i;
-	char 	**argt;
-	
+	char	**argt;
+
 	if (argc <= 2)
 		error_log("Not enough arguments.\n");
 	argt = argv;

@@ -27,69 +27,70 @@ static int	get_min(t_list **stack)
 	return (min);
 }
 
-int     sort_3(t_list **stack_a)
+int	sort_3(t_list **stack_a)
 {
-    int op;
-    t_list *first;
-    t_list *second;
-    t_list *third;
+	int		op;
+	t_list	*first;
+	t_list	*second;
+	t_list	*third;
 
-    op = 0;
-    first = *stack_a;
-    second = first->next;
-    third = second->next;
-    if (first->index > second->index && second->index < third->index)
-        op += sa(stack_a);
-    else if (first->index > third->index && second->index < first->index)
-        op += ra(stack_a);
-    else if (first->index > third->index && second->index > first->index)
-        op += rra(stack_a);
-    else 
-    {
-        op += sa(stack_a);
-        if (first->index == 1)
-            op += rra(stack_a);
-        else
-            op += ra(stack_a);
-    }
-    return (op);
+	op = 0;
+	first = *stack_a;
+	second = first->next;
+	third = second->next;
+	if (first->index > second->index && second->index < third->index)
+		op += s_(stack_a, "sa\n");
+	else if (first->index > third->index && second->index < first->index)
+		op += r_(stack_a, "ra\n");
+	else if (first->index > third->index && second->index > first->index)
+		op += rr_(stack_a, "rra\n");
+	else
+	{
+		op += s_(stack_a, "sa\n");
+		if (first->index == 1)
+			op += rr_(stack_a, "rra\n");
+		else
+			op += r_(stack_a, "ra\n");
+	}
+	return (op);
 }
 
-int    small_sort(t_list **stack_a, t_list **stack_b, int size)
+int	small_sort(t_list **stack_a, t_list **stack_b, int size)
 {
-    int     op;
-    int     next_min;
-    t_list  *head;
+	int		op;
+	int		next_min;
+	t_list	*head;
 
-    head = *stack_a;
-    op = 0;
-    next_min = 0;
-    while (lst_size(stack_a) != 3)
-    {
-        while (head->index != next_min){
-            op += ra(stack_a);
-            head = *stack_a;
-        }
-        op += pb(stack_a, stack_b);
-        next_min++;
-    }
-    op += sort_3(stack_a);
-    while (lst_size(stack_b))
-        op += pa(stack_b, stack_a);
-    return op;
+	head = *stack_a;
+	op = 0;
+	next_min = 0;
+	while (lst_size(stack_a) != 3)
+	{
+		while (head->index != next_min)
+		{
+			op += r_(stack_a, "ra\n");
+			head = *stack_a;
+		}
+		op += p_(stack_a, stack_b, "pb\n");
+		next_min++;
+	}
+	op += sort_3(stack_a);
+	while (lst_size(stack_b))
+		op += p_(stack_b, stack_a, "pa\n");
+	return (op);
 }
 
-void    simple_sort(t_list **stack_a, t_list **stack_b, int *op)
+void	simple_sort(t_list **stack_a, t_list **stack_b, int *op)
 {
-    int size;
+	int	size;
 
-    if (is_sorted(stack_a) || !stack_a)
-        return ;
-    size = lst_size(stack_a);
-    if (size == 2)
-        *op = sa(stack_a);
-    else if (size == 3)
-        *op = sort_3(stack_a);
-    else if (size > 3)
-        *op = small_sort(stack_a, stack_b, size);
+	if (is_sorted(stack_a) || !stack_a)
+		return ;
+	size = lst_size(stack_a);
+	if (size == 2)
+		*op = s_(stack_a, "sa\n");
+	else if (size == 3)
+		*op = sort_3(stack_a);
+	else if (size > 3)
+		*op = small_sort(stack_a, stack_b, size);
 }

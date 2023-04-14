@@ -34,8 +34,8 @@ int	is_sorted(t_list **stack)
 
 void	free_stack(t_list **stack)
 {
-	t_list *head;
-	t_list *temp;
+	t_list	*head;
+	t_list	*temp;
 
 	head = *stack;
 	while (head)
@@ -45,4 +45,24 @@ void	free_stack(t_list **stack)
 		free(temp);
 	}
 	free(stack);
+}
+
+void	list_visualize(t_list **stack_a, char c)
+{
+	t_list	*s_a;
+	char	*temp;
+
+	s_a = *stack_a;
+	ft_putstr_fd("___\n", 1);
+	while (s_a)
+	{
+		temp = ft_itoa(s_a->content);
+		ft_putchar_fd('|', 1);
+		ft_putstr_fd(temp, 1);
+		ft_putstr_fd("|\n", 1);
+		s_a = s_a->next;
+	}
+	ft_putstr_fd("---\n", 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 }

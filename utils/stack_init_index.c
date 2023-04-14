@@ -24,10 +24,13 @@ static t_list	*next_min(t_list **stack)
 	{
 		while (head)
 		{
-			if ((head->index == -1) && (!current_min || head->content < min->content))
-			{
-				min = head;
-				current_min = 1;
+			if (head->index == -1)
+			{	
+				if (!current_min || head->content < min->content)
+				{
+					min = head;
+					current_min = 1;
+				}
 			}
 			head = head->next;
 		}
@@ -46,5 +49,18 @@ void	index_stack(t_list **stack)
 	{
 		head->index = index++;
 		head = next_min(stack);
+	}
+}
+
+void	init_list(t_list **stack, int argc, char **argv)
+{
+	t_list	*new;
+	char	**argt;
+
+	argt = argv;
+	while (argc-- > 1)
+	{
+		new = lst_new(ft_atoi(argt[argc]));
+		lst_addfront(stack, new);
 	}
 }
