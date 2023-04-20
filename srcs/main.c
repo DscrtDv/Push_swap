@@ -37,10 +37,10 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 		simple_sort(stack_a, stack_b, &op);
 	else
 		radix_sort(stack_a, stack_b, &op);
+    //print_stack(stack_a, str_op);
 	if (!is_sorted(stack_a))
 		error_log("An error occured while sorting the stack.\n");
 	str_op = ft_itoa(op);
-	//print_stack(stack_a, str_op);
 }
 
 int	main(int argc, char **argv)

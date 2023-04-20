@@ -47,6 +47,22 @@ void	free_stack(t_list **stack)
 	free(stack);
 }
 
+/*
+void	list_visualize(t_list **stack_a, char c)
+{
+	t_list	*s_a;
+	char	*temp;
+
+	s_a = *stack_a;
+	while (s_a)
+	{
+		printf("| %i |\n", s_a->index);
+		s_a = s_a->next;
+	}
+	printf("%c\n",c);
+}
+*/
+
 void	list_visualize(t_list **stack_a, char c)
 {
 	t_list	*s_a;
