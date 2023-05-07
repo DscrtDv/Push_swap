@@ -11,22 +11,6 @@
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-static int	get_min(t_list **stack)
-{
-	t_list	*head;
-	int		min;
-
-	head = *stack;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && head->index != -1)
-			min = head->index;
-	}
-	return (min);
-}
-
 static void	finish_sort_3(t_list **stack_a, int *op)
 {
 	*op += s_(stack_a, "sa\n");
@@ -60,7 +44,7 @@ static void	sort_3(t_list **stack_a, int *op)
 		finish_sort_3(stack_a, op);
 }
 
-static void	small_sort(t_list **stack_a, t_list **stack_b, int size, int *op)
+static void	small_sort(t_list **stack_a, t_list **stack_b, int *op)
 {
 	int		next_min;
 	t_list	*head;
@@ -77,7 +61,8 @@ static void	small_sort(t_list **stack_a, t_list **stack_b, int size, int *op)
 		*op += p_(stack_a, stack_b, "pb\n");
 		next_min++;
 	}
-	sort_3(stack_a, op);
+	if (!is_sorted(stack_a))
+		sort_3(stack_a, op);
 	while (lst_size(stack_b))
 		*op += p_(stack_b, stack_a, "pa\n");
 }
@@ -94,5 +79,5 @@ void	simple_sort(t_list **stack_a, t_list **stack_b, int *op)
 	else if (size == 3)
 		sort_3(stack_a, op);
 	else if (size > 3)
-		small_sort(stack_a, stack_b, size, op);
+		small_sort(stack_a, stack_b, op);
 }

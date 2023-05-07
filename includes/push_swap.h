@@ -13,7 +13,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
-# include <stdio.h>
 
 typedef struct s_list{
 	int				content;
@@ -52,7 +51,7 @@ int			s_swap(t_list **stack);
 int			s_push(t_list **from, t_list **to);
 
 //utils
-void		error_log(char *log);
+void		error_log(void);
 int			is_sorted(t_list **stack);
 void		free_stack(t_list **stack);
 void		list_visualize(t_list **stack_a, char c);

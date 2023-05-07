@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
 
-void	error_log(char *log)
+void	error_log(void)
 {
-	ft_putstr_fd(log, 1);
-	ft_putstr_fd("exiting...\n", 1);
+	ft_putstr_fd("Error\n", 1);
 	exit(1);
 }
 
@@ -54,21 +53,6 @@ void	list_visualize(t_list **stack_a, char c)
 	char	*temp;
 
 	s_a = *stack_a;
-	while (s_a)
-	{
-		printf("| %i |\n", s_a->index);
-		s_a = s_a->next;
-	}
-	printf("%c\n",c);
-}
-*/
-
-void	list_visualize(t_list **stack_a, char c)
-{
-	t_list	*s_a;
-	char	*temp;
-
-	s_a = *stack_a;
 	ft_putstr_fd("___\n", 1);
 	while (s_a)
 	{
@@ -82,3 +66,4 @@ void	list_visualize(t_list **stack_a, char c)
 	ft_putchar_fd(c, 1);
 	ft_putchar_fd('\n', 1);
 }
+*/

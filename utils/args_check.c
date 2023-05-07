@@ -45,19 +45,19 @@ void	check_args(int argc, char **argv)
 	int		i;
 	char	**argt;
 
-	if (argc <= 2)
-		error_log("Not enough arguments.\n");
+	if (argc < 2)
+		error_log();
 	argt = argv;
 	i = 1;
 	while (argt[i])
 	{
 		temp = ft_atoi(argt[i]);
 		if (!is_num(argt[i]))
-			error_log("One of the argument is NaN.\n");
+			error_log();
 		if (find_duplicate(temp, argt, i))
-			error_log("A duplicate was found in the argument list.\n");
+			error_log();
 		if (temp < -2147483648 || temp > 2147483647)
-			error_log("One of the argument is too big for INT_DATA_TYPE.\n");
+			error_log();
 		i++;
 	}
 }

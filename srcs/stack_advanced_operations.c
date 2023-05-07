@@ -120,7 +120,7 @@ int	s_swap(t_list **stack)
 	head = *stack;
 	next = head->next;
 	if (!head || !next)
-		error_log("An error occured while swapping.");
+		error_log();
 	temp_val = head->content;
 	temp_index = head->index;
 	head->content = next->content;
