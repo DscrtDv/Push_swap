@@ -32,6 +32,7 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 	if (!is_sorted(stack_a))
 		error_log();
 	str_op = ft_itoa(op);
+	free(str_op);
 }
 
 int	main(int argc, char **argv)

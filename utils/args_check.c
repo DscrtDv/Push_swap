@@ -45,6 +45,8 @@ void	check_args(int argc, char **argv)
 	int		i;
 	char	**argt;
 
+	if (argc == 1)
+		exit(1);
 	if (argc < 2)
 		error_log();
 	argt = argv;
