@@ -10,7 +10,6 @@ SRCs		=	srcs/main.c srcs/push_swap_operations.c srcs/radix_sort.c srcs/simple_so
 				utils/args_check.c utils/stack_init_index.c utils/t_list.c utils/utils.c
 INC			=	-I. -I$(LIBFT_DIR)
 				
-
 	# Compiling Variables #
 CC			=	gcc
 CFLAG		=	-Wall -Wextra -Werror

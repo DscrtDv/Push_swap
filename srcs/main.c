@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));
+	if (!stack_a || !stack_b)
+		return (1);
 	*stack_a = NULL;
 	*stack_b = NULL;
 	set_up(stack_a, argc, argv);
